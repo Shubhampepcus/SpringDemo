@@ -27,8 +27,16 @@ public class SpringAddressMappingApplication {
   @Scheduled(cron = "5 * * * * ?")
   public static void checkHealth() {
     RestTemplate restTemplate = new RestTemplate();
-    String result = (restTemplate.exchange("http://localhost:9191/checkhealth", HttpMethod.GET, null, String.class)
-        .getBody());
+    String result;
+    try {
+      result = (restTemplate.exchange("http://localhost:9191/checkhealth", HttpMethod.GET, null, String.class).getBody());
+      result = result.substring(11,13);
+      if(result.equalsIgnoreCase("up")){
+        result="<--------------Application Health is Good------------>";
+      }
+    }catch (Exception exception){
+      result = "Application is Down------------->";
+    }
     System.out.println(result);
   }
 
