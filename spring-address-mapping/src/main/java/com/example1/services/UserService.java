@@ -67,7 +67,7 @@ public class UserService  {
       throw new ResourceNotFoundException("You are Already Activated", "Id", userId);
     }
 
-
+    System.out.println("git fetch && git checkout <<branch_name>>");
     return userRepository.save(user);
   }
 }
