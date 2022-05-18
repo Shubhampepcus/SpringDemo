@@ -17,7 +17,7 @@ import java.util.List;
 
   public User createUser(User user) {
     user.setCreatedOn(new Date());
-    System.out("Hello git");
+   // System.out("Hello git");
     return userRepository.save(user);
   }
 
