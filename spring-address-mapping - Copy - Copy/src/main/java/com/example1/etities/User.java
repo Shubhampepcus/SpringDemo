@@ -19,6 +19,9 @@ import java.util.List;
 
   @OneToMany private List <Book> books;
 
+  public User(int i, String shubham) {
+  }
+
   public Date getCreatedOn() {
     return createdOn;
   }
