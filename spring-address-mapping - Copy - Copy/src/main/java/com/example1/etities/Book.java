@@ -1,5 +1,6 @@
 package com.example1.etities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,8 @@ import java.util.List;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) private Date returnedOn;
   @OneToMany(cascade = CascadeType.ALL) private List <Shelve> shelves;
+//  @ManyToOne(cascade = CascadeType.ALL) private User user;
+
 
   public Date getIssuedOn() {
     return issuedOn;

@@ -14,23 +14,28 @@ import java.util.List;
 @RestController @RequestMapping("/users") public class UserController {
   @Autowired private UserService userService;
 
-  @PostMapping("/") public User saveUser(@RequestBody User user) {
+  @PostMapping("/")
+  public User saveUser(@RequestBody User user) {
     return userService.createUser(user);
   }
 
-  @PatchMapping("/issueBook") public User issuBook(@RequestParam Integer userId, @RequestBody List <Book> books) {
+  @PatchMapping("/issueBook")
+  public String issuBook(@RequestParam Integer userId, @RequestBody List <Book> books) {
     return userService.issueBook(userId, books);
   }
 
-  @PatchMapping("/deactivateUser") public ResponseEntity <User> deActivateUser(@RequestParam Integer userId) {
+  @PatchMapping("/deactivateUser")
+  public ResponseEntity <String> deActivateUser(@RequestParam Integer userId) {
     return new ResponseEntity <>(userService.deActivate(userId), HttpStatus.OK);
   }
 
-  @PatchMapping("/activateUser") public ResponseEntity <User> activateUser(@RequestParam Integer userId) {
+  @PatchMapping("/activateUser")
+  public ResponseEntity <String> activateUser(@RequestParam Integer userId) {
     return new ResponseEntity(userService.activateUser(userId), HttpStatus.OK);
   }
 
-  @PatchMapping("/returnBook") public User returnedBook(@RequestParam Integer userId,
+  @PatchMapping("/returnBook")
+  public String returnedBook(@RequestParam Integer userId,
       @RequestBody List <Book> bookList) {
     return userService.returnBook(userId, bookList);
   }
